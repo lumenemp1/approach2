@@ -1,3 +1,59 @@
+Traceback (most recent call last):
+  File "C:\Users\AD54619\Text2Sql\approach2\schema.py", line 46, in <module>
+    chroma_client = chromadb.Client(Settings(chroma_db_impl="duckdb+parquet", persist_directory="./chroma_db"))
+  File "C:\Users\AD54619\Text2Sql\virtualen\Lib\site-packages\chromadb\__init__.py", line 333, in Client
+    return ClientCreator(tenant=tenant, database=database, settings=settings)
+  File "C:\Users\AD54619\Text2Sql\virtualen\Lib\site-packages\chromadb\api\client.py", line 58, in __init__
+    super().__init__(settings=settings)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD54619\Text2Sql\virtualen\Lib\site-packages\chromadb\api\shared_system_client.py", line 19, in __init__
+    SharedSystemClient._create_system_if_not_exists(self._identifier, settings)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD54619\Text2Sql\virtualen\Lib\site-packages\chromadb\api\shared_system_client.py", line 26, in _create_system_if_not_exists
+    new_system = System(settings)
+  File "C:\Users\AD54619\Text2Sql\virtualen\Lib\site-packages\chromadb\config.py", line 363, in __init__
+    if settings[key] is not None:
+       ~~~~~~~~^^^^^
+  File "C:\Users\AD54619\Text2Sql\virtualen\Lib\site-packages\chromadb\config.py", line 297, in __getitem__
+    raise ValueError(LEGACY_ERROR)
+ValueError: You are using a deprecated configuration of Chroma.
+
+If you do not have data you wish to migrate, you only need to change how you construct
+your Chroma client. Please see the "New Clients" section of https://docs.trychroma.com/deployment/migration.
+________________________________________________________________________________________________
+
+If you do have data you wish to migrate, we have a migration tool you can use in order to
+migrate your data to the new Chroma architecture.
+Please `pip install chroma-migrate` and run `chroma-migrate` to migrate your data and then
+change how you construct your Chroma client.
+
+See https://docs.trychroma.com/deployment/migration for more information or join our discord at https://discord.gg/MMeYNTmh3x for help!     
+PS C:\Users\AD54619\Text2Sql\approach2> python schema.py
+✅ 5 schema chunks embedded and stored in Chroma.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 config.json: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 190/190 [00:00<00:00, 819kB/s]
 Traceback (most recent call last):
   File "C:\Users\AD54619\Text2Sql\approach2\schema.py", line 46, in <module>
