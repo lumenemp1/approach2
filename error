@@ -1,3 +1,104 @@
+PS C:\Users\AD54619\Text2Sql\approach2> python query_schema.py
+Loading Gemma 2B model... (this may take a while)
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 25.11it/s] 
+Loading embedding model for schema retrieval...
+
+Enter your natural language query: show me customers who placed the most orders last year
+
+Embedding user query for vector search...
+
+🔍 Top Matching Schema Chunks:
+
+1. Table 'orders' has columns: order_id (INTEGER), customer_id (INTEGER), order_date (DATE), status (VARCHAR(50)), total_amount (DECIMAL(10, 2)). Foreign keys: customers.customer_id. [Distance: 0.3239]
+2. Table 'customers' has columns: customer_id (INTEGER), name (VARCHAR(100)), email (VARCHAR(100)), city (VARCHAR(50)), created_at (DATE). [Distance: 0.3249]
+3. Table 'suppliers' has columns: supplier_id (INTEGER), name (VARCHAR(100)), contact_email (VARCHAR(100)), country (VARCHAR(50)). [Distance: 0.3495]
+
+==========================================================
+Gemma 2B Prompt:
+
+You are a helpful assistant that extracts the user's intent and key entities from their question, given a database schema context.
+
+User Query: "show me customers who placed the most orders last year"
+
+Schema Context:
+- Table 'orders' has columns: order_id (INTEGER), customer_id (INTEGER), order_date (DATE), status (VARCHAR(50)), total_amount (DECIMAL(10, 2)). Foreign keys: customers.customer_id.
+- Table 'customers' has columns: customer_id (INTEGER), name (VARCHAR(100)), email (VARCHAR(100)), city (VARCHAR(50)), created_at (DATE).   
+- Table 'suppliers' has columns: supplier_id (INTEGER), name (VARCHAR(100)), contact_email (VARCHAR(100)), country (VARCHAR(50)).
+
+Task:
+1. Identify the user's intent (a short label or phrase).
+2. Identify the key entities or parameters from the query (e.g., year, limit, sum, filter).
+3. Return them in valid JSON. Example:
+{
+  "intent": "...",
+  "entities": {
+     "year": "...",
+     "limit": 10
+  }
+}
+
+==========================================================
+
+Generating Gemma 2B output...
+
+========== Gemma 2B Response ==========
+
+You are a helpful assistant that extracts the user's intent and key entities from their question, given a database schema context.
+
+User Query: "show me customers who placed the most orders last year"
+
+Schema Context:
+- Table 'orders' has columns: order_id (INTEGER), customer_id (INTEGER), order_date (DATE), status (VARCHAR(50)), total_amount (DECIMAL(10, 2)). Foreign keys: customers.customer_id.
+- Table 'customers' has columns: customer_id (INTEGER), name (VARCHAR(100)), email (VARCHAR(100)), city (VARCHAR(50)), created_at (DATE).   
+- Table 'suppliers' has columns: supplier_id (INTEGER), name (VARCHAR(100)), contact_email (VARCHAR(100)), country (VARCHAR(50)).
+
+Task:
+1. Identify the user's intent (a short label or phrase).
+2. Identify the key entities or parameters from the query (e.g., year, limit, sum, filter).
+3. Return them in valid JSON. Example:
+{
+  "intent": "...",
+  "entities": {
+     "year": "...",
+     "limit": 10
+  }
+}
+
+=======================================
+
+Done!
+PS C:\Users\AD54619\Text2Sql\approach2> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Traceback (most recent call last):
   File "C:\Users\AD54619\Text2Sql\approach2\schema.py", line 46, in <module>
     chroma_client = chromadb.Client(Settings(chroma_db_impl="duckdb+parquet", persist_directory="./chroma_db"))
